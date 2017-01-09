@@ -1,7 +1,9 @@
 package com.ximsfei.dynamicskin;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -9,9 +11,20 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class SkinCompatActivity extends AppCompatActivity {
+
+    private SkinCompatDelegate mSkinDelegate;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        LayoutInflaterCompat.setFactory(getLayoutInflater(), getSkinDelegate());
         super.onCreate(savedInstanceState);
+    }
 
+    @NonNull
+    public SkinCompatDelegate getSkinDelegate() {
+        if (mSkinDelegate == null) {
+            mSkinDelegate = SkinCompatDelegate.create(this);
+        }
+        return mSkinDelegate;
     }
 }
