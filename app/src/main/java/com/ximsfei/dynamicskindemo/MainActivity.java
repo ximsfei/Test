@@ -2,7 +2,7 @@ package com.ximsfei.dynamicskindemo;
 
 import android.os.Bundle;
 
-import com.ximsfei.dynamicskin.SkinCompatActivity;
+import skin.support.app.SkinCompatActivity;
 
 /**
  * Created by pengfengwang on 2017/1/9.
