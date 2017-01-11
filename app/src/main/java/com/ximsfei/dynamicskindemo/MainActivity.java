@@ -1,6 +1,7 @@
 package com.ximsfei.dynamicskindemo;
 
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import skin.support.SkinManager;
@@ -16,6 +17,7 @@ public class MainActivity extends SkinCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initToolbar();
         findViewById(R.id.text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +46,11 @@ public class MainActivity extends SkinCompatActivity {
                 SkinManager.getInstance().restoreDefaultTheme();
             }
         });
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
 }
