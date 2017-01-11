@@ -9,9 +9,14 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Method;
 
 import skin.support.observe.SkinObservable;
+import skin.support.utils.SkinConstants;
 import skin.support.utils.SkinFileUtils;
 import skin.support.utils.SkinLog;
 import skin.support.utils.SkinPreference;
@@ -51,6 +56,7 @@ public class SkinManager extends SkinObservable {
         mAppContext = context.getApplicationContext();
         SkinPreference.init(mAppContext);
         SkinResLoader.init(mAppContext);
+        loadSkin();
     }
 
     public void restoreDefaultTheme() {
@@ -98,12 +104,14 @@ public class SkinManager extends SkinObservable {
             try {
                 if (params.length == 1) {
                     SkinLog.d("skinPkgPath", params[0]);
-                    String skinPkgPath = SkinFileUtils.getSkinDir(mAppContext) + File.separator + params[0];
-                    File file = new File(skinPkgPath);
-                    SkinLog.d("skinPkgPath", file + " " + file.exists());
-                    if (!file.exists()) {
-                        return false;
+                    String skinPkgPath = SkinFileUtils.getSkinDir(mAppContext) + File.separator + params[0] + SkinConstants.SKIN_SUFFIX;
+                    if (!isSkinExists(params[0])) {
+                        copySkinFromAssets(params[0]);
+                        if (!isSkinExists(params[0])) {
+                            return false;
+                        }
                     }
+
                     PackageManager mPm = mAppContext.getPackageManager();
                     PackageInfo mInfo = mPm.getPackageArchiveInfo(skinPkgPath, PackageManager.GET_ACTIVITIES);
                     String pkgName = mInfo.packageName;
@@ -144,8 +152,38 @@ public class SkinManager extends SkinObservable {
                 if (mListener != null) mListener.onFailed("皮肤资源获取失败");
             }
         }
-
     }
 
-    ;
+    private String copySkinFromAssets(String name) {
+        String skinDir = SkinFileUtils.getSkinDir(mAppContext);
+        String skinPath = skinDir + File.separator + name;
+        try {
+            InputStream is = mAppContext.getAssets().open(
+                    SkinConstants.SKIN_DEPLOY_PATH
+                            + File.separator
+                            + name + SkinConstants.SKIN_SUFFIX);
+            File fileDir = new File(skinDir);
+            if (!fileDir.exists()) {
+                fileDir.mkdirs();
+            }
+            OutputStream os = new FileOutputStream(skinPath);
+            int byteCount;
+            byte[] bytes = new byte[1024];
+
+            while ((byteCount = is.read(bytes)) != -1) {
+                os.write(bytes, 0, byteCount);
+            }
+            os.close();
+            is.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return skinPath;
+    }
+
+    public boolean isSkinExists(String skinName) {
+        return !TextUtils.isEmpty(skinName)
+                && new File(SkinFileUtils.getSkinDir(mAppContext) + File.separator + skinName).exists();
+    }
 }

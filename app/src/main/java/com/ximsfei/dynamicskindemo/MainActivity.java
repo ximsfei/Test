@@ -1,6 +1,5 @@
 package com.ximsfei.dynamicskindemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,7 +19,7 @@ public class MainActivity extends SkinCompatActivity {
         findViewById(R.id.text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SkinManager.getInstance().loadSkin("new.skin", new SkinManager.SkinLoaderListener() {
+                SkinManager.getInstance().loadSkin("new", new SkinManager.SkinLoaderListener() {
                     @Override
                     public void onStart() {
                         SkinLog.d("onStart");
