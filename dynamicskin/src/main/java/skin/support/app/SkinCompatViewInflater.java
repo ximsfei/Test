@@ -10,12 +10,10 @@ import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatCheckedTextView;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.AppCompatRatingBar;
@@ -32,6 +30,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import skin.support.widget.SkinCompatButton;
+import skin.support.widget.SkinCompatEditText;
+import skin.support.widget.SkinCompatImageView;
 import skin.support.widget.SkinCompatTextView;
 
 /**
@@ -82,13 +83,13 @@ public class SkinCompatViewInflater {
                 view = new SkinCompatTextView(context, attrs);
                 break;
             case "ImageView":
-                view = new AppCompatImageView(context, attrs);
+                view = new SkinCompatImageView(context, attrs);
                 break;
             case "Button":
-                view = new AppCompatButton(context, attrs);
+                view = new SkinCompatButton(context, attrs);
                 break;
             case "EditText":
-                view = new AppCompatEditText(context, attrs);
+                view = new SkinCompatEditText(context, attrs);
                 break;
             case "Spinner":
                 view = new AppCompatSpinner(context, attrs);
@@ -183,7 +184,7 @@ public class SkinCompatViewInflater {
         final TypedArray a = context.obtainStyledAttributes(attrs, sOnClickAttrs);
         final String handlerName = a.getString(0);
         if (handlerName != null) {
-            view.setOnClickListener(new SkinCompatViewInflater.DeclaredOnClickListener(view, handlerName));
+            view.setOnClickListener(new DeclaredOnClickListener(view, handlerName));
         }
         a.recycle();
     }

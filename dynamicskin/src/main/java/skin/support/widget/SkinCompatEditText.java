@@ -1,32 +1,28 @@
 package skin.support.widget;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
-import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.appcompat.R;
+import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
-
-import skin.support.utils.SkinLog;
 
 /**
  * Created by ximsfei on 2017/1/10.
  */
 
-public class SkinCompatTextView extends AppCompatTextView implements SkinCompatHelper {
+public class SkinCompatEditText extends AppCompatEditText implements SkinCompatHelper {
     private SkinCompatTextHelper mTextHelper;
     private SkinCompatBackgroundHelper mBackgroundTintHelper;
 
-    public SkinCompatTextView(Context context) {
+    public SkinCompatEditText(Context context) {
         this(context, null);
     }
 
-    public SkinCompatTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.textViewStyle);
+    public SkinCompatEditText(Context context, AttributeSet attrs) {
+        this(context, attrs, R.attr.editTextStyle);
     }
 
-    public SkinCompatTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SkinCompatEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mBackgroundTintHelper = new SkinCompatBackgroundHelper(this);
         mBackgroundTintHelper.loadFromAttributes(attrs, defStyleAttr);

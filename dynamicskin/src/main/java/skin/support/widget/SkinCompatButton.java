@@ -1,32 +1,27 @@
 package skin.support.widget;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
-import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.appcompat.R;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 
-import skin.support.utils.SkinLog;
-
 /**
- * Created by ximsfei on 2017/1/10.
+ * Created by ximsfei on 17-1-11.
  */
-
-public class SkinCompatTextView extends AppCompatTextView implements SkinCompatHelper {
+public class SkinCompatButton extends AppCompatButton implements SkinCompatHelper {
     private SkinCompatTextHelper mTextHelper;
     private SkinCompatBackgroundHelper mBackgroundTintHelper;
 
-    public SkinCompatTextView(Context context) {
+    public SkinCompatButton(Context context) {
         this(context, null);
     }
 
-    public SkinCompatTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, android.R.attr.textViewStyle);
+    public SkinCompatButton(Context context, AttributeSet attrs) {
+        this(context, attrs, R.attr.buttonStyle);
     }
 
-    public SkinCompatTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SkinCompatButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mBackgroundTintHelper = new SkinCompatBackgroundHelper(this);
         mBackgroundTintHelper.loadFromAttributes(attrs, defStyleAttr);
@@ -55,5 +50,4 @@ public class SkinCompatTextView extends AppCompatTextView implements SkinCompatH
         mBackgroundTintHelper.applySkin();
         mTextHelper.applySkin();
     }
-
 }

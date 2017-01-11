@@ -66,6 +66,9 @@ public class SkinCompatTextHelper {
         if (a.hasValue(R.styleable.TextAppearance_android_textColor)) {
             mTextColorResId = a.getResourceId(R.styleable.TextAppearance_android_textColor, -1);
         }
+        if (a.hasValue(R.styleable.TextAppearance_android_textColorHint)) {
+            mTextColorHintResId = a.getResourceId(R.styleable.TextAppearance_android_textColorHint, -1);
+        }
         a.recycle();
         applySkin();
     }

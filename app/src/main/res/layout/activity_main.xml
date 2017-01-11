@@ -28,4 +28,22 @@
         android:clickable="true"
         android:text="drawable" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/black"/>
+
+    <Button
+        style="@style/TextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/selectableItemBackground"
+        android:text="Button" />
+
+    <EditText
+        style="@style/TextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:textColor="@color/black"
+        android:hint="EditText" />
 </LinearLayout>
