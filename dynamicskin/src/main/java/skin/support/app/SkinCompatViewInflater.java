@@ -34,6 +34,7 @@ import skin.support.widget.SkinCompatButton;
 import skin.support.widget.SkinCompatEditText;
 import skin.support.widget.SkinCompatImageView;
 import skin.support.widget.SkinCompatTextView;
+import skin.support.widget.SkinCompatToolbar;
 
 /**
  * Created by ximsfei on 17-1-9.
@@ -79,6 +80,9 @@ public class SkinCompatViewInflater {
 
         // We need to 'inject' our tint aware Views in place of the standard framework versions
         switch (name) {
+            case "android.support.v7.widget.Toolbar":
+                view = new SkinCompatToolbar(context, attrs);
+                break;
             case "TextView":
                 view = new SkinCompatTextView(context, attrs);
                 break;
