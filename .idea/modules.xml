@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DynamicSkin.iml" filepath="$PROJECT_DIR$/DynamicSkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Skin.iml" filepath="$PROJECT_DIR$/Skin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/dynamicskin/dynamicskin.iml" filepath="$PROJECT_DIR$/dynamicskin/dynamicskin.iml" />
       <module fileurl="file://$PROJECT_DIR$/skinsample/skinsample.iml" filepath="$PROJECT_DIR$/skinsample/skinsample.iml" />

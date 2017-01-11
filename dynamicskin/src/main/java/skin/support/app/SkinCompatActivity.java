@@ -6,11 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
 
+import skin.support.SkinManager;
+import skin.support.observe.SkinObservable;
+import skin.support.observe.SkinObserver;
+
 /**
  * Created by ximsfei on 17-1-8.
  */
 
-public class SkinCompatActivity extends AppCompatActivity {
+public class SkinCompatActivity extends AppCompatActivity implements SkinObserver {
 
     private SkinCompatDelegate mSkinDelegate;
 
@@ -26,5 +30,22 @@ public class SkinCompatActivity extends AppCompatActivity {
             mSkinDelegate = SkinCompatDelegate.create(this);
         }
         return mSkinDelegate;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SkinManager.getInstance().addObserver(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SkinManager.getInstance().deleteObserver(this);
+    }
+
+    @Override
+    public void updateSkin(SkinObservable observable, Object o) {
+        getSkinDelegate().applySkin();
     }
 }
