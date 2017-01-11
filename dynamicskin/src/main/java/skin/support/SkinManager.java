@@ -104,13 +104,14 @@ public class SkinManager extends SkinObservable {
             try {
                 if (params.length == 1) {
                     SkinLog.d("skinPkgPath", params[0]);
-                    String skinPkgPath = SkinFileUtils.getSkinDir(mAppContext) + File.separator + params[0] + SkinConstants.SKIN_SUFFIX;
-                    if (!isSkinExists(params[0])) {
+                    String skinPkgPath = SkinFileUtils.getSkinDir(mAppContext) + File.separator + params[0];
+                    // ToDo 方便调试, 每次点击都从assets中读取
+//                    if (!isSkinExists(params[0])) {
                         copySkinFromAssets(params[0]);
                         if (!isSkinExists(params[0])) {
                             return false;
                         }
-                    }
+//                    }
 
                     PackageManager mPm = mAppContext.getPackageManager();
                     PackageInfo mInfo = mPm.getPackageArchiveInfo(skinPkgPath, PackageManager.GET_ACTIVITIES);
@@ -161,7 +162,7 @@ public class SkinManager extends SkinObservable {
             InputStream is = mAppContext.getAssets().open(
                     SkinConstants.SKIN_DEPLOY_PATH
                             + File.separator
-                            + name + SkinConstants.SKIN_SUFFIX);
+                            + name);
             File fileDir = new File(skinDir);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();

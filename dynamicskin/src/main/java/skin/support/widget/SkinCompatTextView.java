@@ -28,10 +28,6 @@ public class SkinCompatTextView extends AppCompatTextView implements SkinCompatH
 
     public SkinCompatTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs, defStyleAttr);
-    }
-
-    private void init(AttributeSet attrs, int defStyleAttr) {
         mBackgroundTintHelper = new SkinCompatBackgroundHelper(this);
         mBackgroundTintHelper.loadFromAttributes(attrs, defStyleAttr);
         mTextHelper = new SkinCompatTextHelper(this);
@@ -45,35 +41,6 @@ public class SkinCompatTextView extends AppCompatTextView implements SkinCompatH
         if (mBackgroundTintHelper != null) {
             mBackgroundTintHelper.onSetBackgroundResource(resId);
         }
-    }
-
-    @Override
-    public void setBackgroundDrawable(Drawable background) {
-        super.setBackgroundDrawable(background);
-        SkinLog.d(background + "setBackgroundResource pengfeng");
-        if (mBackgroundTintHelper != null) {
-            mBackgroundTintHelper.onSetBackgroundDrawable(background);
-        }
-    }
-
-    @Override
-    public void setTextColor(int color) {
-        super.setTextColor(color);
-    }
-
-    @Override
-    public void setTextColor(ColorStateList colors) {
-        super.setTextColor(colors);
-    }
-
-    @Override
-    public void setTypeface(Typeface tf) {
-        super.setTypeface(tf);
-    }
-
-    @Override
-    public void setTypeface(Typeface tf, int style) {
-        super.setTypeface(tf, style);
     }
 
     @Override

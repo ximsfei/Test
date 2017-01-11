@@ -9,15 +9,23 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:text="切换皮肤"
-        android:textColor="@android:color/white"
-        android:background="@color/black" />
+        android:text="切换皮肤 @color"
+        android:textColor="@color/colorAccent1"
+        android:background="?attr/colorPrimary" />
 
     <TextView
         android:id="@+id/text1"
         style="@style/TextStyle"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:text="恢复默认" />
+        android:text="恢复默认 @style" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/black3"
+        android:textColor="@color/color_selector"
+        android:text="drawable" />
 
 </LinearLayout>

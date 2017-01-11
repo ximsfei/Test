@@ -1,7 +1,9 @@
 package skin.support.widget;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 
 import skin.support.utils.SkinLog;
@@ -48,17 +50,25 @@ public class SkinResLoader {
         }
 
         String resName = mAppContext.getResources().getResourceEntryName(resId);
+        String typeName = mAppContext.getResources().getResourceTypeName(resId);
+        SkinLog.d("res name = " + resName);
+        SkinLog.d("type name = " + typeName);
 
         int targetResId = mResources.getIdentifier(resName, "color", mSkinPkgName);
-        int targetColor;
 
-        try {
-            targetColor = mResources.getColor(targetResId);
-        } catch (Resources.NotFoundException e) {
-            e.printStackTrace();
-            targetColor = originColor;
+        return targetResId == 0 ? originColor : mResources.getColor(targetResId);
+    }
+
+    public Drawable getDrawable(int resId) {
+        Drawable originDrawable = ContextCompat.getDrawable(mAppContext, resId);
+        if (mResources == null || isDefaultSkin) {
+            return originDrawable;
         }
 
-        return targetColor;
+        String resName = mAppContext.getResources().getResourceEntryName(resId);
+
+        int targetResId = mResources.getIdentifier(resName, "drawable", mSkinPkgName);
+
+        return targetResId == 0 ? originDrawable : mResources.getDrawable(targetResId);
     }
 }

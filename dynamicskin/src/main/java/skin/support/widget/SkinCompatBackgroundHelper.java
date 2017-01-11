@@ -24,12 +24,13 @@ public class SkinCompatBackgroundHelper {
 
     void loadFromAttributes(AttributeSet attrs, int defStyleAttr) {
         TintTypedArray a = TintTypedArray.obtainStyledAttributes(mView.getContext(), attrs,
-                android.support.v7.appcompat.R.styleable.ViewBackgroundHelper, defStyleAttr, 0);
+                R.styleable.ViewBackgroundHelper, defStyleAttr, 0);
         try {
             if (a.hasValue(R.styleable.ViewBackgroundHelper_android_background)) {
                 mBackgroundResId = a.getResourceId(
                         R.styleable.ViewBackgroundHelper_android_background, -1);
                 SkinLog.d("mBackgroundResId = " + mBackgroundResId);
+                SkinLog.d("mBackgroundResId = " + R.styleable.ViewBackgroundHelper_android_background);
             }
         } finally {
             a.recycle();
@@ -42,24 +43,17 @@ public class SkinCompatBackgroundHelper {
         applySkin();
     }
 
-    void onSetBackgroundDrawable(Drawable background) {
-//        mBackgroundResId = -1;
-        // We don't know that this drawable is, so we need to clear the default background tint
-        applySkin();
-    }
-
     public void applySkin() {
         if (mBackgroundResId == -1) {
             return;
         }
-        SkinLog.d("pengfeng " + mBackgroundResId);
-//        int color = SkinManager.getInstance().getColor(mBackgroundResId);
-//        SkinLog.d("pengfeng " + color);
-//        if (mView instanceof TextView) {
-//            ((TextView) mView).setTextColor(color);
-//        }
-        int color = SkinResLoader.getInstance().getColor(mBackgroundResId);
-        SkinLog.d("pengfeng" + color);
-        mView.setBackgroundColor(color);
+        String typeName = mView.getResources().getResourceTypeName(mBackgroundResId);
+        if ("color".equals(typeName)) {
+            int color = SkinResLoader.getInstance().getColor(mBackgroundResId);
+            mView.setBackgroundColor(color);
+        } else if ("drawable".equals(typeName)) {
+            Drawable drawable = SkinResLoader.getInstance().getDrawable(mBackgroundResId);
+            mView.setBackgroundDrawable(drawable);
+        }
     }
 }
