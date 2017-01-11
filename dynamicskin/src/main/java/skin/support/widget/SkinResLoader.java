@@ -50,9 +50,6 @@ public class SkinResLoader {
         }
 
         String resName = mAppContext.getResources().getResourceEntryName(resId);
-        String typeName = mAppContext.getResources().getResourceTypeName(resId);
-        SkinLog.d("res name = " + resName);
-        SkinLog.d("type name = " + typeName);
 
         int targetResId = mResources.getIdentifier(resName, "color", mSkinPkgName);
 
@@ -70,5 +67,18 @@ public class SkinResLoader {
         int targetResId = mResources.getIdentifier(resName, "drawable", mSkinPkgName);
 
         return targetResId == 0 ? originDrawable : mResources.getDrawable(targetResId);
+    }
+
+    public ColorStateList getColorStateList(int resId) {
+        ColorStateList originColorList = ContextCompat.getColorStateList(mAppContext, resId);
+        if (mResources == null || isDefaultSkin) {
+            return originColorList;
+        }
+
+        String resName = mAppContext.getResources().getResourceEntryName(resId);
+
+        int targetResId = mResources.getIdentifier(resName, "color", mSkinPkgName);
+
+        return targetResId == 0 ? originColorList : mResources.getColorStateList(targetResId);
     }
 }
