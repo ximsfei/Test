@@ -1,5 +1,5 @@
 # Android-skin-support
-Android-skin-support: 深入Android源码, 新思路实现Android换肤框架, 极低的学习成本，极好的用户体验. You can try it.
+Android-skin-support: 深入Android源码, 新思路实现Android换肤框架, 极低的学习成本, 极好的用户体验. You can try it.
 
 * [演示](#演示)
 * [支持](#支持)
@@ -9,9 +9,7 @@ Android-skin-support: 深入Android源码, 新思路实现Android换肤框架, �
 
 下载[demo](demo/app-debug.apk), 安装到手机上即可查看效果, 在demo apk的assets中已经包含插件皮肤库.
 
-<video id="video" controls="" preload="true">
-<source id="mp4" src="demo/device-2017-01-12-212658.mp4" type="video/mp4">
-</video>
+[演示视频](demo/device-2017-01-12-220140.mp4)
 
 ## 支持
 
@@ -25,6 +23,8 @@ Android-skin-support: 深入Android源码, 新思路实现Android换肤框架, �
 * 未完待续...
 
 ## 用法
+
+### 导入:
 
 ```xml
 git clone https://github.com/ximsfei/Android-skin-support.git
@@ -48,9 +48,9 @@ dependencies {
 }
 ```
 
-### 初始化
+### 初始化:
 
-#### 在Application的onCreate中初始化:
+#### 在Application的onCreate中初始化
     
 ```java
 @Override
@@ -64,12 +64,12 @@ dependencies {
 
 #### 继承SkinCompatActivity
 
-让所有需要需要换肤的Activity继承自`skin.support.app.SkinCompatActivity`.
+让所有需要换肤的Activity继承自`skin.support.app.SkinCompatActivity`.
 
 #### 加载插件皮肤库
 
 ```java
-// 指定皮肤插件, 并且监听插件进度
+// 指定皮肤插件, 并且监听加载状态
 SkinCompatManager.getInstance().loadSkin("new.skin", new SkinCompatManager.SkinLoaderListener() {
     @Override
     public void onStart() {
@@ -91,7 +91,7 @@ SkinCompatManager.getInstance().loadSkin("new.skin", new SkinCompatManager.SkinL
 SkinCompatManager.getInstance().restoreDefaultTheme();
 ```
 
-### 制作皮肤插件
+### 制作皮肤插件:
 
 #### 新建Android application工程
 
