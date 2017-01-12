@@ -22,6 +22,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.1.0'
 
-    releaseCompile project(path: ':dynamicskin', configuration: 'release')
-    debugCompile project(path: ':dynamicskin', configuration: 'debug')
+    releaseCompile project(path: ':skin-support', configuration: 'release')
+    debugCompile project(path: ':skin-support', configuration: 'debug')
 }
