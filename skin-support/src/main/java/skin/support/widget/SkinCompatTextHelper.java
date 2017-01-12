@@ -16,10 +16,10 @@ import skin.support.utils.SkinLog;
 public class SkinCompatTextHelper {
     private static final String TAG = SkinCompatTextHelper.class.getSimpleName();
 
-    final TextView mView;
+    private final TextView mView;
 
-    int mTextColorResId;
-    int mTextColorHintResId;
+    int mTextColorResId = -1;
+    int mTextColorHintResId = -1;
 
     SkinCompatTextHelper(TextView view) {
         mView = view;

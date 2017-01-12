@@ -8,11 +8,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.appcompat.R;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatCheckedTextView;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
 import android.support.v7.widget.AppCompatRadioButton;
@@ -220,15 +220,15 @@ public class SkinCompatViewInflater {
      */
     private static Context themifyContext(Context context, AttributeSet attrs,
                                           boolean useAndroidTheme, boolean useAppTheme) {
-        final TypedArray a = context.obtainStyledAttributes(attrs, android.support.v7.appcompat.R.styleable.View, 0, 0);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.View, 0, 0);
         int themeId = 0;
         if (useAndroidTheme) {
             // First try reading android:theme if enabled
-            themeId = a.getResourceId(android.support.v7.appcompat.R.styleable.View_android_theme, 0);
+            themeId = a.getResourceId(R.styleable.View_android_theme, 0);
         }
         if (useAppTheme && themeId == 0) {
             // ...if that didn't work, try reading app:theme (for legacy reasons) if enabled
-            themeId = a.getResourceId(android.support.v7.appcompat.R.styleable.View_theme, 0);
+            themeId = a.getResourceId(R.styleable.View_theme, 0);
 
             if (themeId != 0) {
                 Log.i(LOG_TAG, "app:theme is now deprecated. "
