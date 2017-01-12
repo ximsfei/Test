@@ -26,8 +26,8 @@ import skin.support.widget.SkinCompatResources;
  * Created by ximsfei on 17-1-10.
  */
 
-public class SkinManager extends SkinObservable {
-    private static volatile SkinManager sInstance;
+public class SkinCompatManager extends SkinObservable {
+    private static volatile SkinCompatManager sInstance;
     private final Context mAppContext;
 
     public interface SkinLoaderListener {
@@ -38,31 +38,36 @@ public class SkinManager extends SkinObservable {
         void onFailed(String errMsg);
     }
 
-    public static void init(Context context) {
+    public static SkinCompatManager init(Context context) {
         if (sInstance == null) {
-            synchronized (SkinManager.class) {
+            synchronized (SkinCompatManager.class) {
                 if (sInstance == null) {
-                    sInstance = new SkinManager(context);
+                    sInstance = new SkinCompatManager(context);
                 }
             }
         }
-    }
-
-    public static SkinManager getInstance() {
         return sInstance;
     }
 
-    private SkinManager(Context context) {
+    public static SkinCompatManager getInstance() {
+        return sInstance;
+    }
+
+    private SkinCompatManager(Context context) {
         mAppContext = context.getApplicationContext();
         SkinPreference.init(mAppContext);
         SkinCompatResources.init(mAppContext);
-        loadSkin();
     }
 
     public void restoreDefaultTheme() {
         SkinPreference.getInstance().setSkinPath("").commitEditor();
         SkinCompatResources.getInstance().setSkinResource(mAppContext.getResources(), mAppContext.getPackageName());
         notifyUpdateSkin();
+    }
+
+    public SkinCompatManager setStatusBarColor(String colorName) {
+        SkinCompatResources.getInstance().setStatusBarColor(colorName);
+        return this;
     }
 
     public void loadSkin() {

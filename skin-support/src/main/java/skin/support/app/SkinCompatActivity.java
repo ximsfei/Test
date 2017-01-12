@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
 
-import skin.support.SkinManager;
+import skin.support.SkinCompatManager;
 import skin.support.observe.SkinObservable;
 import skin.support.observe.SkinObserver;
 
@@ -22,6 +22,7 @@ public class SkinCompatActivity extends AppCompatActivity implements SkinObserve
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), getSkinDelegate());
         super.onCreate(savedInstanceState);
+        SkinCompatStatusBar.setWindowStatusBarColor(this);
     }
 
     @NonNull
@@ -35,17 +36,18 @@ public class SkinCompatActivity extends AppCompatActivity implements SkinObserve
     @Override
     protected void onResume() {
         super.onResume();
-        SkinManager.getInstance().addObserver(this);
+        SkinCompatManager.getInstance().addObserver(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SkinManager.getInstance().deleteObserver(this);
+        SkinCompatManager.getInstance().deleteObserver(this);
     }
 
     @Override
     public void updateSkin(SkinObservable observable, Object o) {
         getSkinDelegate().applySkin();
+        SkinCompatStatusBar.setWindowStatusBarColor(this);
     }
 }
