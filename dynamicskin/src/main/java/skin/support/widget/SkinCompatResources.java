@@ -6,34 +6,32 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 
-import skin.support.utils.SkinLog;
-
 /**
  * Created by ximsfei on 2017/1/11.
  */
 
-public class SkinResLoader {
-    private static volatile SkinResLoader sInstance;
+public class SkinCompatResources {
+    private static volatile SkinCompatResources sInstance;
     private final Context mAppContext;
     private Resources mResources;
     private String mSkinPkgName;
     private boolean isDefaultSkin;
 
-    private SkinResLoader(Context context) {
+    private SkinCompatResources(Context context) {
         mAppContext = context;
     }
 
     public static void init(Context context) {
         if (sInstance == null) {
-            synchronized (SkinResLoader.class) {
+            synchronized (SkinCompatResources.class) {
                 if (sInstance == null) {
-                    sInstance = new SkinResLoader(context);
+                    sInstance = new SkinCompatResources(context);
                 }
             }
         }
     }
 
-    public static SkinResLoader getInstance() {
+    public static SkinCompatResources getInstance() {
         return sInstance;
     }
 

@@ -49,12 +49,12 @@ public class SkinCompatImageHelper {
         }
         String typeName = mView.getResources().getResourceTypeName(mSrcResId);
         if ("color".equals(typeName)) {
-            ColorStateList colorStateList = SkinResLoader.getInstance().getColorStateList(mSrcResId);
+            ColorStateList colorStateList = SkinCompatResources.getInstance().getColorStateList(mSrcResId);
             Drawable drawable = mView.getDrawable();
             DrawableCompat.setTintList(drawable, colorStateList);
             mView.setImageDrawable(drawable);
         } else if ("drawable".equals(typeName)) {
-            Drawable drawable = SkinResLoader.getInstance().getDrawable(mSrcResId);
+            Drawable drawable = SkinCompatResources.getInstance().getDrawable(mSrcResId);
             mView.setImageDrawable(drawable);
         }
     }

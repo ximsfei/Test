@@ -85,12 +85,12 @@ public class SkinCompatTextHelper {
         SkinLog.d(TAG, "mTextColorResId = " + mTextColorResId);
         SkinLog.d(TAG, "mTextColorHintResId = " + mTextColorHintResId);
         if (mTextColorResId != -1) {
-            ColorStateList color = SkinResLoader.getInstance().getColorStateList(mTextColorResId);
+            ColorStateList color = SkinCompatResources.getInstance().getColorStateList(mTextColorResId);
             mView.setTextColor(color);
             return;
         }
         if (mTextColorHintResId != -1) {
-            ColorStateList color = SkinResLoader.getInstance().getColorStateList(mTextColorHintResId);
+            ColorStateList color = SkinCompatResources.getInstance().getColorStateList(mTextColorHintResId);
             mView.setHintTextColor(color);
             return;
         }

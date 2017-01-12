@@ -53,14 +53,14 @@ public class SkinCompatBackgroundHelper {
         }
         String typeName = mView.getResources().getResourceTypeName(mBackgroundResId);
         if ("color".equals(typeName)) {
-            ColorStateList colorStateList = SkinResLoader.getInstance().getColorStateList(mBackgroundResId);
+            ColorStateList colorStateList = SkinCompatResources.getInstance().getColorStateList(mBackgroundResId);
             Drawable drawable = mView.getBackground();
             DrawableCompat.setTintList(drawable, colorStateList);
             mView.setBackgroundDrawable(drawable);
 //            int color = SkinResLoader.getInstance().getColor(mBackgroundResId);
 //            mView.setBackgroundColor(color);
         } else if ("drawable".equals(typeName)) {
-            Drawable drawable = SkinResLoader.getInstance().getDrawable(mBackgroundResId);
+            Drawable drawable = SkinCompatResources.getInstance().getDrawable(mBackgroundResId);
             mView.setBackgroundDrawable(drawable);
         }
     }

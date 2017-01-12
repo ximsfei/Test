@@ -20,7 +20,7 @@ import skin.support.utils.SkinConstants;
 import skin.support.utils.SkinFileUtils;
 import skin.support.utils.SkinLog;
 import skin.support.utils.SkinPreference;
-import skin.support.widget.SkinResLoader;
+import skin.support.widget.SkinCompatResources;
 
 /**
  * Created by ximsfei on 17-1-10.
@@ -55,13 +55,13 @@ public class SkinManager extends SkinObservable {
     private SkinManager(Context context) {
         mAppContext = context.getApplicationContext();
         SkinPreference.init(mAppContext);
-        SkinResLoader.init(mAppContext);
+        SkinCompatResources.init(mAppContext);
         loadSkin();
     }
 
     public void restoreDefaultTheme() {
         SkinPreference.getInstance().setSkinPath("").commitEditor();
-        SkinResLoader.getInstance().setSkinResource(mAppContext.getResources(), mAppContext.getPackageName());
+        SkinCompatResources.getInstance().setSkinResource(mAppContext.getResources(), mAppContext.getPackageName());
         notifyUpdateSkin();
     }
 
@@ -130,10 +130,10 @@ public class SkinManager extends SkinObservable {
                     SkinPreference.getInstance().setSkinPath(params[0]).commitEditor();
 
                     if (resources != null) {
-                        SkinResLoader.getInstance().setSkinResource(resources, pkgName);
+                        SkinCompatResources.getInstance().setSkinResource(resources, pkgName);
                         return true;
                     }
-                    SkinResLoader.getInstance().setSkinResource(
+                    SkinCompatResources.getInstance().setSkinResource(
                             mAppContext.getResources(), mAppContext.getPackageName());
                     return false;
                 }

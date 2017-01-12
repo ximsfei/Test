@@ -44,7 +44,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:src="@color/black"/>
+        android:src="@drawable/black3"/>
 
     <Button
         style="@style/TextStyle"
