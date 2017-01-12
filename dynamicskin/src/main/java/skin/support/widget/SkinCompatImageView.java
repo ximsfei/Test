@@ -13,6 +13,7 @@ import skin.support.utils.SkinLog;
 
 public class SkinCompatImageView extends AppCompatImageView implements SkinCompatHelper {
     private SkinCompatBackgroundHelper mBackgroundTintHelper;
+    private SkinCompatImageHelper mImageHelper;
 
     public SkinCompatImageView(Context context) {
         this(context, null);
@@ -26,6 +27,9 @@ public class SkinCompatImageView extends AppCompatImageView implements SkinCompa
         super(context, attrs, defStyleAttr);
         mBackgroundTintHelper = new SkinCompatBackgroundHelper(this);
         mBackgroundTintHelper.loadFromAttributes(attrs, defStyleAttr);
+
+        mImageHelper = new SkinCompatImageHelper(this);
+        mImageHelper.loadFromAttributes(attrs, defStyleAttr);
     }
 
     @Override
@@ -37,7 +41,14 @@ public class SkinCompatImageView extends AppCompatImageView implements SkinCompa
     }
 
     @Override
+    public void setImageResource(@DrawableRes int resId) {
+        // Intercept this call and instead retrieve the Drawable via the image helper
+        mImageHelper.setImageResource(resId);
+    }
+
+    @Override
     public void applySkin() {
         mBackgroundTintHelper.applySkin();
+        mImageHelper.applySkin();
     }
 }
