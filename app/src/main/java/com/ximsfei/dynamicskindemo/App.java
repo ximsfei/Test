@@ -13,7 +13,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         SkinCompatManager.init(this)
-                .setStatusBarColor("black")
                 .loadSkin();
     }
 }

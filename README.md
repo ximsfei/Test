@@ -1,10 +1,17 @@
 # Android-skin-support
-Android-skin-support: 一款用心去做的Android换肤框架, 极低的侵入性，极好的用户体验.
-You can try it.
+Android-skin-support: 深入Android源码, 新思路实现Android换肤框架, 极低的学习成本，极好的用户体验. You can try it.
 
-* [支持](#支持)
 * [演示](#演示)
+* [支持](#支持)
 * [用法](#用法)
+
+## 演示
+
+下载[demo](demo/app-debug.apk), 安装到手机上即可查看效果, 在demo apk的assets中已经包含插件皮肤库.
+
+<video id="video" controls="" preload="true">
+<source id="mp4" src="demo/device-2017-01-12-212658.mp4" type="video/mp4">
+</video>
 
 ## 支持
 
@@ -16,10 +23,6 @@ You can try it.
 * ImageView
 * Toolbar
 * 未完待续...
-
-## 演示
-
-下载[demo](demo/app-debug.apk), 安装到手机上即可查看效果, 在demo apk的assets中已经包含插件皮肤库.
 
 ## 用法
 
@@ -47,8 +50,8 @@ dependencies {
 
 ### 初始化
 
-1. 在Application的onCreate中初始化:
-
+#### 在Application的onCreate中初始化:
+    
 ```java
 @Override
     public void onCreate() {
@@ -59,11 +62,11 @@ dependencies {
     }
 ```
 
-2. 继承SkinCompatActivity
+#### 继承SkinCompatActivity
 
 让所有需要需要换肤的Activity继承自`skin.support.app.SkinCompatActivity`.
 
-3. 加载插件皮肤库
+#### 加载插件皮肤库
 
 ```java
 // 指定皮肤插件, 并且监听插件进度
@@ -90,11 +93,11 @@ SkinCompatManager.getInstance().restoreDefaultTheme();
 
 ### 制作皮肤插件
 
-1. 新建Android application工程
+#### 新建Android application工程
 
-2. 将需要换肤的资源放到res目录下(同名资源)
+#### 将需要换肤的资源放到res目录下(同名资源)
 
-3. 打包生成apk, 即为皮肤包
+#### 打包生成apk, 即为皮肤包
 
 ## 最佳实践:
 
