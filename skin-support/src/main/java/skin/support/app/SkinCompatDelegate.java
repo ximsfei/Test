@@ -18,7 +18,7 @@ import skin.support.utils.SkinLog;
 import skin.support.widget.SkinCompatHelper;
 
 /**
- * Created by pengfengwang on 2017/1/9.
+ * Created by ximsfei on 2017/1/9.
  */
 
 public class SkinCompatDelegate implements LayoutInflaterFactory {

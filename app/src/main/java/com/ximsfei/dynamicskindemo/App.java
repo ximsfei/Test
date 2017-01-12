@@ -5,7 +5,7 @@ import android.app.Application;
 import skin.support.SkinCompatManager;
 
 /**
- * Created by pengfengwang on 2017/1/10.
+ * Created by ximsfei on 2017/1/10.
  */
 
 public class App extends Application {

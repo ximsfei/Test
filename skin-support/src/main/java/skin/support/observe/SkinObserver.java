@@ -1,7 +1,7 @@
 package skin.support.observe;
 
 /**
- * Created by pengfengwang on 2017/1/10.
+ * Created by ximsfei on 2017/1/10.
  */
 
 public interface SkinObserver {

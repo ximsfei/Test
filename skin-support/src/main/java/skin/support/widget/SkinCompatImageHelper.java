@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import skin.support.utils.SkinLog;
 
 /**
- * Created by pengfengwang on 2017/1/12.
+ * Created by ximsfei on 2017/1/12.
  */
 public class SkinCompatImageHelper {
     private static final String TAG = SkinCompatImageHelper.class.getSimpleName();

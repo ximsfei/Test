@@ -9,7 +9,7 @@ import skin.support.app.SkinCompatActivity;
 import skin.support.utils.SkinLog;
 
 /**
- * Created by pengfengwang on 2017/1/9.
+ * Created by ximsfei on 2017/1/9.
  */
 
 public class MainActivity extends SkinCompatActivity {
